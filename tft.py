@@ -2,21 +2,20 @@ from os import putenv
 import pyautogui
 import time
 
+def findMouse():
+    while True:
+        CurrentX, CurrentY = pyautogui.position()
+        print(CurrentX,CurrentY)
+
 
 def surrender():
-    print('about to type /ff')
-    pyautogui.press('enter')
-    pyautogui.press('/')
+    pyautogui.keyDown('ctrlleft')
     pyautogui.press('f')
-    pyautogui.press('f')
-    pyautogui.press('enter')
-    print('typed /ff')
+    pyautogui.keyUp('ctrlleft')
+    time.sleep(1)
 
-    print('about to press q 6 times')
-    for index in range(6):
-        pyautogui.press('q')
-        time.sleep(0.25)
-    print('finished pressing')
+    pyautogui.click(835,487)
+    time.sleep(10)
 
 
 def startQueue():
@@ -30,16 +29,28 @@ def acceptQueue():
     inQueue = True
     pyautogui.moveTo(984, 776)
     while inQueue:
-        time.sleep(4)
+        time.sleep(9)
         pyautogui.click()
         print('just clicked')
         if(pyautogui.locateCenterOnScreen('in_game_checker.png') != None):
             print('now in game')
             inQueue = False    
         
+def levelUp():
+    pyautogui.click()
 
-def InGame():
-    print('meow')
+def buy():
+    pyautogui.click()
+
+def inGame():
+    time.sleep(10 * 60)
+    surrender()
+
+def inGame2():
+    playing = True
+    while playing:
+        levelUp()
+        buy()
 
 
 def reQueue():
@@ -48,23 +59,13 @@ def reQueue():
     pyautogui.click()
     time.sleep(5)
     
+print('Enter how many games you want to grind ')
+games = int(input())
 
-
-
-
-temp = True
-while temp:
-    time.sleep(2)
-
+for x in range(games) :
     startQueue()
     acceptQueue()
-    #reQueue()
-    #startQueue()
-    
-
-    
-
-    temp = False
-
-    # code words, praise baal
+    inGame()
+    reQueue() 
+    # praying to baal
 
