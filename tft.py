@@ -1,4 +1,4 @@
-from os import putenv
+
 import pyautogui
 import time
 
@@ -9,20 +9,14 @@ def findMouse():
 
 
 def surrender():
-    pyautogui.keyDown('ctrlleft')
-    pyautogui.press('f')
-    pyautogui.keyUp('ctrlleft')
-    time.sleep(1)
-
-    pyautogui.click(835,487)
+    with pyautogui.hold('ctrlleft'):
+        pyautogui.press('f')
     time.sleep(10)
 
 
 def startQueue():
     time.sleep(3)
-    QueueX, QueueY = pyautogui.locateCenterOnScreen('find_match.png')
-    pyautogui.moveTo(QueueX, QueueY)
-    pyautogui.click()
+    pyautogui.click(853,907)
 
 
 def acceptQueue():
@@ -43,7 +37,7 @@ def buy():
     pyautogui.click()
 
 def inGame():
-    time.sleep(10 * 60)
+    time.sleep(560)
     surrender()
 
 def inGame2():
@@ -58,14 +52,13 @@ def reQueue():
     pyautogui.moveTo(reQueueX,reQueueY)
     pyautogui.click()
     time.sleep(5)
-    
-print('Enter how many games you want to grind ')
+
+
+print('Enter how many games you want to grind')
 games = int(input())
 
-for x in range(games) :
+for x in range(games):
     startQueue()
     acceptQueue()
     inGame()
-    reQueue() 
-    # praying to baal
-
+    reQueue()
