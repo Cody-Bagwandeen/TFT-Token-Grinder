@@ -7,21 +7,15 @@ def surrender():
     pyautogui.press('enter')
 
 def startQueue():
-    QueueX, QueueY = pyautogui.locateCenterOnScreen('')
+    QueueX, QueueY = pyautogui.locateCenterOnScreen('find_match.png')
     pyautogui.moveTo(QueueX,QueueY)
     pyautogui.click()
 
 
 temp = True
 while temp:
-    currentMouseX, currentMouseY = pyautogui.position()
-    print(pyautogui.size())
-    time.sleep(1)
-    print(currentMouseX)
-    print(currentMouseY)
-
-    time.sleep(3)
-    surrender()
+    time.sleep(5)
+    startQueue()
     
 
     temp = False
